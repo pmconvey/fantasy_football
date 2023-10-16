@@ -1,0 +1,46 @@
+dataset,column,definition
+team_week,League,The company that operates the fantasy football league.
+team_week,LeagueId,The unique identifier for the fantasy football league.
+team_week,LeagueName,The name of the fantasy football league.
+team_week,FantasySeason,The season of the matchup.
+team_week,FantasyWeek,The week number of the matchup.
+team_week,WeekType,Indicates whether the week is part of the regular season or the playoffs.
+team_week,OwnerName,The name of the person (or their username) who manages the team.
+team_week,WinTieLoss,"Whether the matchup ended in a win, tie, or loss."
+team_week,PointsFor,The total number of points that the fantasy team scored during the week.
+team_week,PointsAgainst,The total number of points that the opponent's fantasy team scored during the week.
+team_week,WeekRank,"Ranks the teams in the league by PointsFor during the week. The team that scored the fewest points is 1, the 2nd fewest is 2, up to the team that scored the most points."
+team_week,WinProb,"Based on the PointsFor, the probability that the team won their matchup. Win probability is calculated by ranking teams in ascending order by how many points they scored during the week (this is WeekRank). The calculation is then based on the number of teams in the league. For example, in a 10 team league the team that scored the most points has a win probability of 100% (9/9); the 2nd most, 89% (8/9); down to the team that scored the fewest points, 0% (0/9). The formula to calculate this is: ([team week rank] - 1) / ([# of teams] - 1). "
+team_week,OppWeekRank,"Ranks the teams in the league by PointsAgainst during the week. The team that had the fewest points against is 1, the 2nd fewest is 2, up to the team that had the most points against."
+team_week,LossProb,"Based on the PointsAgainst, the probability that the team lost their matchup. Loss Probability is calculated by ranking teams in ascending order by how many points their opponent scored during the week (this is OppWeekRank). The calculation is then based on the number of teams in the league and whether the team won or lost (this is done to remove that effect of that team, otherwise the better teams would consistently be rated as having lower probabilities of losing. The formula is: [If win] ([team opponent rank] - 1) / ([# of teams] - 2); [If loss/tie] ([team opponent rank] - 2) / ([# of teams] - 2)."
+team_week,StandingsRank,"At the end of the week, the team's place in the league standings. This is ordered by the number of wins and then by the sum of PointsFor during the season. The team with the most wins is ranked 1, 2nd most ranked 2, and so on."
+team_week,SeasonWins,"At the end of the week, the number of wins that the team has over the course of the season."
+team_week,SeasonPointsFor,"At the end of the week, the number of points for that the team has over the course of the season."
+team_week,SeasonPointsAgainst,"At the end of the week, the number of points against that the team has over the course of the season."
+team_week,SeasonWinProb,"At the end of the week, the cumulative average of the team's win probability."
+team_week,SeasonLossProb,"At the end of the week, the cumulative average of the team's loss probability."
+team_week,OwnerId,The unique identifier for the fantasy team owner.
+team_week,TeamId,"The unique identifier for the fantasy team. TeamId combined with FantasyWeek, FantasySeason, LeagueId, and League uniquely identify the rows in this dataset."
+team_week,TeamName,The name of the fantasy team.
+team_week,OpponentId,The unique identifier for the opponent's fantasy team.
+team_week,OppOwnerId,The unique identifier for the fantasy team owner of the week's opponent.
+team_week,OppOwnerName,The name of the person (or their username) of the person who manages the opponent team.
+team_week,OppTeamName,The name of the opponent's fantasy team.
+team_week,PlayoffTeams,The number of teams that make the playoffs at the end of the regular season.
+team_season,League,The company that operates the fantasy football league.
+team_season,LeagueId,The unique identifier for the fantasy football league.
+team_season,LeagueName,The name of the fantasy football league.
+team_season,FantasySeason,The fantasy football season.
+team_season,OwnerName,The name of the person (or their username) of the person who manages the team.
+team_season,TeamName,The name of the fantasy team.
+team_season,Champion,Whether the team won the fantasy league championship.
+team_season,Loser,"For teams that did not make the playoffs, whether the team lost every game they played in the consolation championship."
+team_season,MadePlayoffs,Whether the team made the playoffs or not.
+team_season,StandingsRank,"The team's place in the league standings. This is ordered by the number of wins and then by the sum of PointsFor during the season. The team with the most wins is ranked 1, 2nd most ranked 2, and so on."
+team_season,SeasonWins,The total number of wins during the course of the season.
+team_season,SeasonPointsFor,The sum of points for during the course of the season.
+team_season,SeasonPointsAgainst,The sum of points against during the course of the season.
+team_season,SeasonWinProb,"The average of the team's win probability from each week. Win probability is calculated by ranking teams in ascending order by how many points they scored during the week (this is WeekRank). The calculation is then based on the number of teams in the league. For example, in a 10 team league the team that scored the most points has a win probability of 100% (9/9); the 2nd most, 89% (8/9); down to the team that scored the fewest points, 0% (0/9). The formula to calculate this is: ([team week rank] - 1) / ([# of teams] - 1)."
+team_season,SeasonLossProb,"The average of the team's loss probability from each week. Loss Probability is calculated by ranking teams in ascending order by how many points their opponent scored during the week (this is OppWeekRank). The calculation is then based on the number of teams in the league and whether the team won or lost (this is done to remove that effect of that team, otherwise the better teams would consistently be rated as having lower probabilities of losing. The formula is: [If win] ([team opponent rank] - 1) / ([# of teams] - 2); [If loss/tie] ([team opponent rank] - 2) / ([# of teams] - 2)."
+team_season,OwnerId,The unique identifier for the fantasy team owner.
+team_season,TeamId,"The unique identifier for the fantasy team. TeamId combined with FantasySeason, LeagueId, and League uniquely identify the rows in this dataset."

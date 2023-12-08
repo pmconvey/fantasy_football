@@ -51,6 +51,7 @@ source(here("src", "module_viz_teamsummary.R"))
 source(here("src", "module_viz_teamstats.R"))
 source(here("src", "module_viz_weeklystandings.R"))
 source(here("src", "module_viz_weeklypoints.R"))
+source(here("src", "module_viz_scheduleswitch.R"))
 source(here("src", "module_viz_download.R"))
 source(here("src", "module_viz_colors.R"))
 
@@ -134,6 +135,13 @@ components_ui <- function () {
                                    label = tags$img(src = "www/weeklypoints.png",
                                                     class = "imageFormat")),
                       tags$p("see how teams scored during each week"))
+      ),
+      fluidRow(column(width = 6L,
+                      tags$h3("Schedule Switcher"),
+                      actionButton("go_switch",
+                                   label = tags$img(src = "www/switch.png",
+                                                    class = "imageFormat")),
+                      tags$p("see how teams would do with different schedules"))
       )
     )
   )
@@ -165,6 +173,7 @@ ffdata_ui <- function () {
       tabPanelBody("team_stats", teamstats_ui("teams")),
       tabPanelBody("weekly_standings", standings_ui("standings")),
       tabPanelBody("weekly_points", weeklypoints_ui("weekly_points")),
+      tabPanelBody("switch", switch_ui("schedule_switch")),
       tabPanelBody("colors", color_ui("color")),
       tabPanelBody("download", download_ui("download"))
     ),
@@ -252,6 +261,7 @@ ffdata_server <- function(input, output, session) {
   })
 
   teamsummary_server("seasons", color_list, team_season)
+  switch_server("schedule_switch", color_list, team_week, team_season)
 
   teamstats_highlight <-
     teamstats_server("teams", color_list, data_r$highlight, team_week)
@@ -288,6 +298,10 @@ ffdata_server <- function(input, output, session) {
   observe(updateTabsetPanel(session, "pages",
                             selected = "weekly_points")) %>%
     bindEvent(input$go_weeklypoints)
+  
+  observe(updateTabsetPanel(session, "pages",
+                            selected = "switch")) %>%
+    bindEvent(input$go_switch)
   
   observe(updateTabsetPanel(session, "pages",
                             selected = "colors")) %>%

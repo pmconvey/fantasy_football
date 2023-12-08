@@ -81,18 +81,18 @@ download_server <- function(id, TeamWeek, TeamSeason) {
 # uncomment the code below to test the module in isolation from the rest of
 # the app
 
-test_app <- function() {
-  ui <- fluidPage(download_ui("test"))
-
-  server <- function(input, output, session) {
-    data1 <- reactive({read.csv(here("demo_data", "demo_teams.csv"))})
-    data2 <- reactive({read.csv(here("demo_data", "demo_teams.csv"))})
-    data3 <- reactive({read.csv(here("demo_data", "demo_teams.csv"))})
-    data4 <- reactive({read.csv(here("demo_data", "demo_teams.csv"))})
-    download_server("test", data1, data2)
-  }
-
-  shinyApp(ui, server)
-}
-
-test_app()
+# test_app <- function() {
+#   ui <- fluidPage(download_ui("test"))
+# 
+#   server <- function(input, output, session) {
+#     data1 <- reactive({read.csv(here("demo_data", "demo_teams.csv"))})
+#     data2 <- reactive({read.csv(here("demo_data", "demo_teams.csv"))})
+#     data3 <- reactive({read.csv(here("demo_data", "demo_teams.csv"))})
+#     data4 <- reactive({read.csv(here("demo_data", "demo_teams.csv"))})
+#     download_server("test", data1, data2)
+#   }
+# 
+#   shinyApp(ui, server)
+# }
+# 
+# test_app()

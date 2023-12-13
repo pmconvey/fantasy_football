@@ -154,7 +154,7 @@ ffdata_ui <- function () {
     ),
     tags$div(style = "text-align:center", class = "darkbg",
              tags$br(),
-             tags$h1("fantasy football data visualization tool"),
+             tags$h1("Fantasy Football Shiny App"),
              tags$span(
                conditionalPanel(condition = "input.pages != 'home'",
                                 actionButton("home",

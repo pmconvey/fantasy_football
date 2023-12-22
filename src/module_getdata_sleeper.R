@@ -479,39 +479,39 @@ sleeper_server <- function(id) {
 # uncomment the code below to test the module in isolation from the rest of
 # the app
 
-test_app <- function() {
-  ui <- fluidPage(
-    sleeper_ui("sleeper"),
-    verbatimTextOutput("test")
-  )
-
-  server <- function(input, output, session) {
-    test_data <- sleeper_server("sleeper")
-    shiny_data <- reactive({
-      # write_csv(test_data$settings_league(),
-      #           here("sleeper_settings_league.csv"), na = "")
-      # write_csv(test_data$settings_schedule(),
-      #           here("sleeper_settings_schedule.csv"), na = "")
-      # write_csv(test_data$settings_rosters(),
-      #           here("sleeper_settings_rosters.csv"), na = "")
-      # write_csv(test_data$settings_scoring(),
-      #           here("sleeper_settings_scoring.csv"), na = "")
-      # write_csv(test_data$teams(),
-      #           here("sleeper_teams.csv"), na = "")
-      # write_csv(test_data$drafts(),
-      #           here("sleeper_drafts.csv"), na = "")
-      # write_csv(test_data$schedules(),
-      #           here("sleeper_schedules.csv"), na = "")
-      # write_csv(test_data$rosters(),
-      #           here("sleeper_rosters.csv"), na = "")
-      test_data$rosters()
-    })
-    output$test <- renderPrint({
-     head(shiny_data(), 10)
-    })
-  }
-
-  shinyApp(ui, server)
-}
+# test_app <- function() {
+#   ui <- fluidPage(
+#     sleeper_ui("sleeper"),
+#     verbatimTextOutput("test")
+#   )
+# 
+#   server <- function(input, output, session) {
+#     test_data <- sleeper_server("sleeper")
+#     shiny_data <- reactive({
+#       # write_csv(test_data$settings_league(),
+#       #           here("sleeper_settings_league.csv"), na = "")
+#       # write_csv(test_data$settings_schedule(),
+#       #           here("sleeper_settings_schedule.csv"), na = "")
+#       # write_csv(test_data$settings_rosters(),
+#       #           here("sleeper_settings_rosters.csv"), na = "")
+#       # write_csv(test_data$settings_scoring(),
+#       #           here("sleeper_settings_scoring.csv"), na = "")
+#       # write_csv(test_data$teams(),
+#       #           here("sleeper_teams.csv"), na = "")
+#       # write_csv(test_data$drafts(),
+#       #           here("sleeper_drafts.csv"), na = "")
+#       # write_csv(test_data$schedules(),
+#       #           here("sleeper_schedules.csv"), na = "")
+#       # write_csv(test_data$rosters(),
+#       #           here("sleeper_rosters.csv"), na = "")
+#       test_data$rosters()
+#     })
+#     output$test <- renderPrint({
+#      head(shiny_data(), 10)
+#     })
+#   }
+# 
+#   shinyApp(ui, server)
+# }
 
 test_app()
